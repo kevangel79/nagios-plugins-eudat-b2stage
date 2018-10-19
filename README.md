@@ -5,18 +5,23 @@ Nagios plugin to check B2STAGE functionality
 
 ## Usage
 
-NAME
+### NAME
+
 ```
       check_b2stage_http-api.py - B2STAGE Http API Nagios plugin
 ```
 
-DESCRIPTION
+### DESCRIPTION
+
 	RESTful HTTP-API for the B2STAGE service inside the EUDAT project.
 	The plugin checks the health of B2STAGE HTTP-API service.
 
-SYNOPSIS
+### SYNOPSIS
+
+```
       check_b2stage_http-api.py [--version] [--help] [--verbose <level>]
                    [--timeout <threshold> ] --hostname <host> [--port <port>]
+```
 
       Options:
        --help,-h         : Display this help.
@@ -26,10 +31,10 @@ SYNOPSIS
        --hostname,-H     : The B2STAGER server host <name or IP).
        --port         : The B2STAGE server port.
 
-OPTIONS
+### OPTIONS
+
     --version
          Display plugins version.
-
     --help
          Display this help.
 
@@ -46,7 +51,10 @@ OPTIONS
          The B2STAGE server port (default to 80).
 
 
-EXAMPLES
+### EXAMPLES
       Using  script:
+
+```
    ./check_b2stage_http-api.py -H www.b2stage.fr -p 443
+```
 
