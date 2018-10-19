@@ -87,11 +87,11 @@ def checkHealth(URL,timeout):
     return description, exit_code
 
 def printResult(description, exit_code):
-        """ Print the predefined values 
+    """ Print the predefined values 
         Args:
             description: the nagios description
             exit_code: the code that should be returned to nagios
-        """
+    """
 
     print 'description'
     sys.exit(exit_code)
