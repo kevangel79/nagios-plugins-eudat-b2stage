@@ -64,33 +64,39 @@ def checkHealth(URL, timeout):
            URL : service hostname
            timeout : how long should we wati
     """
+    out = None
     try:
         out = requests.get(url=URL, timeout=timeout)
 
-        if out.status_code != 200:
-            description = "WARNING - Unexpected status code %s" % out.status_code
-            exit_code = 1
-            return description, exit_code
-
-        content = out.json()
-        resp = content['Response']['data']
-
-        if resp != "Server is alive!":
-            description = "WARNING - Unexpected response: %s" % resp
-            exit_code = 1
-            return description, exit_code
-
-        description = "OK - Service reachable"
-        exit_code = 0
+    except requests.exceptions.SSLError:
+        description = "WARNING - Invalid SSL certificate"
+        exit_code = 1
         return description, exit_code
-
     except requests.exceptions.ConnectionError:
         description = "CRITICAL - Service unreachable"
         exit_code = 2
         return description, exit_code
 
-    description = "UNKNOWN - Status unknown"
-    exit_code = 3
+    if out is None:
+        description = "UNKNOWN - Status unknown"
+        exit_code = 3
+        return description, exit_code
+
+    if out.status_code != 200:
+        description = "WARNING - Unexpected status code %s" % out.status_code
+        exit_code = 1
+        return description, exit_code
+
+    content = out.json()
+    resp = content['Response']['data']
+
+    if resp != "Server is alive!":
+        description = "WARNING - Unexpected response: %s" % resp
+        exit_code = 1
+        return description, exit_code
+
+    description = "OK - Service reachable"
+    exit_code = 0
     return description, exit_code
 
 
