@@ -179,6 +179,11 @@ def checkLogout(URL, timeout, token):
         exit_code = 2
         return description, exit_code, token
 
+    if out.status_code == 404:
+        description = "CRITICAL - Endpoint not found"
+        exit_code = 2
+        return description, exit_code, token
+
     if out.status_code != 204:
         description = "WARNING - Unexpected status code %s" % out.status_code
         exit_code = 1
@@ -186,7 +191,7 @@ def checkLogout(URL, timeout, token):
 
     description = "OK - Service reachable"
     exit_code = 0
-    return description, exit_code
+    return description, exit_code, token
 
 
 def printResult(description, exit_code):
@@ -238,7 +243,7 @@ def main():
     if token is None:
         printResult(description, exit_code)
 
-    description, exit_code = checkLogout(URL, arguments.timeout, token)
+    description, exit_code, token = checkLogout(URL, arguments.timeout, token)
 
     printResult(description, exit_code)
 
