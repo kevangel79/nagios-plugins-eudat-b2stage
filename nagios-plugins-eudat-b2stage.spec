@@ -32,7 +32,7 @@ install -m 755 check_b2stage_http-api.py %{buildroot}/%{_libexecdir}/argo-monito
 %attr(0755,root,root) /%{_libexecdir}/argo-monitoring/probes//eudat-b2stage/check_b2stage_http-api.py
 
 %changelog
-* Mon Dec 17 2018 Themis Zamani  <themiszamani@gmail.com> - 0.1-1
+* Mon Dec 17 2018 Themis Zamani  <themiszamani@gmail.com> - 0.6-1
 - Updated package version. 
 * Fri Oct 19 2018 Themis Zamani  <themiszamani@gmail.com> - 0.1-1
 - Initial version of the package. 
