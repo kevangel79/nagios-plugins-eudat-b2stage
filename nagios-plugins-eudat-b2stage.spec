@@ -1,6 +1,6 @@
 Name:		nagios-plugins-eudat-b2stage
 Version:	0.8
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Nagios probe for B2STAGE
 License:	GPLv3+
 Packager:	Themis Zamani <themiszamani@gmail.com>
